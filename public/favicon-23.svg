@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #142126;
+      }
+
+      .cls-2 {
+        fill: #f8664d;
+      }
+
+      .cls-3 {
+        fill: #f10f1a;
+      }
+    </style>
+  </defs>
+  <polygon class="cls-1" points="40 47.07 28.66 39.99 40 32.92 51.34 40 40 47.07"/>
+  <polygon class="cls-3" points="8.31 29.21 25.59 40 8.31 50.78 8.31 29.21"/>
+  <polygon class="cls-3" points="27.13 40.96 39.19 48.48 39.19 71.07 9.03 52.25 27.13 40.96"/>
+  <polygon class="cls-1" points="39.19 8.93 9.03 27.75 27.13 39.04 39.19 31.52 39.19 8.93"/>
+  <polygon class="cls-1" points="40.81 8.93 40.81 31.52 52.87 39.04 70.97 27.75 40.81 8.93"/>
+  <polygon class="cls-2" points="71.69 50.78 54.41 40 71.69 29.21 71.69 50.78"/>
+  <polygon class="cls-2" points="40.81 71.07 40.81 48.48 52.87 40.96 70.97 52.25 40.81 71.07"/>
+</svg>
