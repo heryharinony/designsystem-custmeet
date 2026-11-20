@@ -1,0 +1,17 @@
+---
+import { swatchInk } from '../../data/colors.js';
+import Icon from '../Icon.astro';
+interface Props { name: string; hex: string }
+const { name, hex } = Astro.props;
+---
+<button
+  type="button"
+  class:list={['sw', { light: hex === '#FFFFFF' }]}
+  style={{ background: hex, color: swatchInk(hex) }}
+  aria-label={`Copier ${name} ${hex}`}
+  data-copy={hex}
+  data-copy-label={`${name} ${hex}`}
+>
+  <b><span>{name}</span><Icon name="copy" /></b>
+  <span><small>{hex}</small></span>
+</button>

@@ -1,0 +1,40 @@
+---
+import { backgrounds, brandColors, shades, statusColors, shadeLabels, swatchInk } from '../../data/colors.js';
+import Swatch from './Swatch.astro';
+interface Props { kind: 'brand' | 'shades' | 'status' | 'backgrounds' }
+const { kind } = Astro.props;
+---
+{kind === 'brand' && <div class="sw-row" id="brand-sw">{brandColors.map(([name, hex]) => <Swatch name={name} hex={hex} />)}</div>}
+{kind === 'shades' && (
+  <div class="grid g2" id="nuances">
+    {shades.map(([name, samples]) => (
+      <div class="panel">
+        <div class="panel-h"><span class="kicker">Nuances</span><h4 id={`nuances-${name.toLowerCase()}`}>{name}</h4></div>
+        <div class="nu-grid">{samples.map(([label, hex]) => <Swatch name={label} hex={hex} />)}</div>
+        <ul class="p-sm shade-usage">
+          {samples.map(([label, , usage]) => <li><strong>{label}</strong>&nbsp;: {usage}.</li>)}
+        </ul>
+      </div>
+    ))}
+  </div>
+)}
+{kind === 'status' && (
+  <div class="st-grid" id="status-sw">
+    <div class="st-row"><span></span>{shadeLabels.map((label) => <span class="st-h">{label}</span>)}</div>
+    {statusColors.map(([name, colors]) => (
+      <div class="st-row">
+        <span>{name}</span>
+        {colors.map((hex, index) => <Swatch name={shadeLabels[index]} hex={hex} />)}
+      </div>
+    ))}
+  </div>
+)}
+{kind === 'backgrounds' && (
+  <div class="bgs" id="bgs">
+    {backgrounds.map(([name, hex, usage]) => (
+      <div style={{ background: hex, color: swatchInk(hex), border: hex === '#F7F7F7' ? '0' : undefined }}>
+        <b>{name}</b><span>{usage}</span>
+      </div>
+    ))}
+  </div>
+)}

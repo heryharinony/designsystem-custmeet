@@ -1,0 +1,39 @@
+---
+import Icon from '../Icon.astro';
+import { iconBackgrounds } from '../../data/icon-gallery.js';
+const names = ['video','calendar','clock','users','user','mic','chat','bell','search','settings','link','lock','mail','home','play','download','copy','plus','check-circle','info','alert','x-circle','arrow-right','star'];
+const [background, foreground, active, usage] = iconBackgrounds.blanc;
+---
+    <div class="ctl" style="margin-bottom:var(--s4)">
+      <span class="kicker">Fond</span>
+      <div class="seg" id="ic-bg" role="group" aria-label="Fond des icônes">
+        <button aria-pressed="true" data-bg="blanc">Blanc</button><button aria-pressed="false" data-bg="ardoise">Ardoise</button><button aria-pressed="false" data-bg="corail">Corail</button><button aria-pressed="false" data-bg="rouge">Rouge</button>
+      </div>
+      <span class="p-sm" id="ic-rule" style="color:var(--muted)">{usage} Survolez une icône.</span>
+    </div>
+    <div class="ic-stage" id="ic-stage" style={{ '--ic-bg': background, '--ic-fg': foreground, '--ic-act': active, border: '1px solid var(--line)' }}>
+      <div class="ic-grid" id="ic-grid">
+        {names.map((name) => <button
+          class="ic-cell"
+          type="button"
+          aria-label={`Icône ${name}`}
+          data-toast="info"
+          data-msg="Fonctionnalité en développement. Le téléchargement des icônes arrive bientôt."
+        ><Icon name={name} class="s32" /><span>{name}</span></button>)}
+      </div>
+    </div>
+    <div class="grid g2" style="margin-top:var(--s6)">
+      <div class="panel">
+        <div class="panel-h"><span class="kicker">Tailles</span><h3 id="tailles">24 · 32 · 48&nbsp;px</h3></div>
+        <div class="stage" style="gap:var(--s6)"><svg class="ic"><use href="#i-video"/></svg><svg class="ic s32"><use href="#i-video"/></svg><svg class="ic s48"><use href="#i-video"/></svg></div>
+        <p class="p-sm" style="color:var(--muted);margin-top:12px">24&nbsp;px pour l’interface, 32&nbsp;px pour les cartes, 48&nbsp;px pour la mise en avant. Trait de 2&nbsp;px sur grille de 24&nbsp;px.</p>
+      </div>
+      <div class="panel">
+        <div class="panel-h"><span class="kicker">Avec du texte</span><h3 id="icone-et-libelle">Icône et libellé</h3></div>
+        <div class="stage"><button class="btn" data-toast="ok" data-msg="Visio lancée. Vos participants peuvent maintenant vous rejoindre."><svg class="ic s20"><use href="#i-video"/></svg>Lancer la visio</button><span style="display:inline-flex;align-items:center;gap:12px"><svg class="ic"><use href="#i-calendar"/></svg>12 novembre 2026</span></div>
+        <p class="p-sm" style="color:var(--muted);margin-top:12px">Distance icône / texte&nbsp;: la moitié de la taille de l’icône. Dans un bouton, l’icône se place à gauche du texte. Une icône ne remplace jamais un mot.</p>
+      </div>
+    </div>
+<script>
+  import '../../scripts/demos/icons.js';
+</script>

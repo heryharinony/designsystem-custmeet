@@ -1,0 +1,24 @@
+---
+import { contrastColors, contrastResult } from '../../data/colors.js';
+import Icon from '../Icon.astro';
+const foreground = '#F8664D';
+const background = '#F7F7F7';
+const result = contrastResult(foreground, background);
+---
+    <div class="panel"><div class="ctr">
+      <div>
+        <div class="field"><label for="c-fg">Couleur du texte</label><select class="select" id="c-fg">{contrastColors.map(([name, hex]) => <option value={hex} selected={hex === foreground}>{name} ({hex})</option>)}</select></div>
+        <div class="field"><label for="c-bg">Couleur du fond</label><select class="select" id="c-bg">{contrastColors.map(([name, hex]) => <option value={hex} selected={hex === background}>{name} ({hex})</option>)}</select></div>
+        <div class="btn-row"><button class="btn b3 sm" id="c-swap"><svg class="ic s20"><use href="#i-swap"/></svg>Inverser</button><button class="btn b4 sm" id="c-bad">Charger une combinaison interdite</button></div>
+      </div>
+      <div class="ctr-prev" id="c-prev" style={{ background, color: foreground }}>
+        <div class="big">Réunissez</div>
+        <div style="font-size:16px">Texte courant de 16&nbsp;px sur ce fond.</div>
+        <div><span class="ratio" id="c-ratio">{result.value}</span><span style="font-size:20px">&nbsp;:1</span></div>
+        <div><span class:list={['verdict', result.tone]} id="c-verdict"><Icon name={result.icon} class="s20" /><span>{result.verdict}</span></span></div>
+        <div style="font-size:13px" id="c-detail" aria-live="polite">{result.detail}</div>
+      </div>
+    </div></div>
+<script>
+  import '../../scripts/demos/contrast.js';
+</script>

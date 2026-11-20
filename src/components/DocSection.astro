@@ -1,0 +1,37 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+
+interface Props { entry: CollectionEntry<'docs'> }
+const { entry } = Astro.props;
+const page = entry.data;
+const { Content } = await render(entry);
+const isHome = page.route === '/';
+const isTopic = page.route.startsWith('/composants/') && page.route !== '/composants/';
+---
+<section
+  id={page.legacyId}
+  tabindex="-1"
+  aria-labelledby={`${page.legacyId}-title`}
+  data-doc-section
+  data-label={page.label}
+  data-topic={isTopic || undefined}
+  class:list={['sec', {
+    alt: page.tone === 'alt',
+    'band-dark': page.tone === 'dark',
+    'doc-home': isHome,
+    'doc-topic': isTopic,
+    'doc-showcase': page.legacyId === 'composants',
+    'doc-colors': page.legacyId === 'couleurs',
+  }]}
+>
+  <div class:list={[{ 'wrap sec-in': !isHome }]} data-doc-content>
+    {page.headline && (
+      <div class="sec-head">
+        {page.eyebrow && <p class="eyebrow">{page.eyebrow}</p>}
+        <h2 class="t-h2 mark" id={`${page.legacyId}-title`}>{page.headline}</h2>
+        {page.lead && <p class="lead">{page.lead}</p>}
+      </div>
+    )}
+    <Content />
+  </div>
+</section>

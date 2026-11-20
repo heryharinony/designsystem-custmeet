@@ -1,0 +1,49 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Icon from './Icon.astro';
+
+type Doc = CollectionEntry<'docs'>['data'];
+interface Props { overview: Doc; pages: Doc[] }
+const { overview, pages } = Astro.props;
+const categories = ['Fondations', 'Composants'] as const;
+const topics = pages.filter(({ route }) => route.startsWith('/composants/') && route !== '/composants/');
+const mainEntries = pages.filter((entry) => !topics.includes(entry));
+---
+<aside class="side" id="side" aria-label="Navigation du design system">
+  <div class="side-brand">
+    <a class="logo" href={`#${overview.legacyId}`} aria-label="CUSTMEET, design system">
+      <svg class="logo-h" viewBox="0 0 205.78 50.67" role="img" aria-label="CUSTMEET"><use href="#logo-h" /></svg>
+      <span class="kicker">Design system</span>
+    </a>
+    <button class="btn b3 sm icon-only drawer-close" type="button" aria-label="Fermer le menu"><Icon name="x" class="s20" /></button>
+  </div>
+  <nav class="nav" aria-label="Navigation principale">
+    {categories.map((category) => (
+      <details class="nav-category" open>
+        <summary>{category}<Icon name="chevron" /></summary>
+        {mainEntries.filter((entry) => entry.category === category).map(({ route, label, icon, legacyId }) => (
+          route === '/composants/' ? (
+            <div class="nav-component">
+              <a class="nav-parent" href={`#${legacyId}`} data-section-link>
+                {icon && <Icon name={icon} />}{label}
+              </a>
+              <details class="nav-topics" open>
+                <summary aria-label="Rubriques des composants"><Icon name="chevron" /></summary>
+                <div class="nav-topics-list">
+                  {topics.map((entry) => (
+                    <a href={`#${entry.legacyId}`} data-section-link>{entry.label}</a>
+                  ))}
+                </div>
+              </details>
+            </div>
+          ) : (
+            <a href={`#${legacyId}`} data-section-link aria-current={legacyId === overview.legacyId ? 'location' : undefined}>
+              {icon && <Icon name={icon} />}{label}
+            </a>
+          )
+        ))}
+      </details>
+    ))}
+  </nav>
+  <div class="side-foot"><span class="dot"></span><div><strong>V 0.1</strong><span>Mis à jour en nov. 2026</span></div></div>
+</aside>

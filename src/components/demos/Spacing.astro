@@ -1,0 +1,48 @@
+---
+const spacingScale = [4, 8, 12, 16, 24, 32, 48, 64, 96];
+const initialCode = '.element {\n  margin: 24px;\n  padding: 24px;\n  gap: 12px;\n  border-radius: 4px;\n}';
+---
+    <div class="grid g2" style="gap:var(--s7)">
+      <div>
+        <h3 class="kicker sub-kicker" style="margin-bottom:8px" id="echelle-d-espacement">Échelle d’espacement</h3>
+        <div id="sp-scale">
+          {spacingScale.map((value, index) => {
+            const token = `--s${index + 1}`;
+            const expression = `var(${token})`;
+            return <button type="button" class="sp-row" aria-label={`Copier ${expression}`} data-copy={expression}>
+              <code>{token}</code><span>{value}&nbsp;px</span><span class="bar" style={{ width: `${value * 2.4}px` }}></span>
+            </button>;
+          })}
+        </div>
+      </div>
+      <div>
+        <h3 class="kicker sub-kicker" style="margin-bottom:8px" id="grille-et-conteneurs">Grille et conteneurs</h3>
+        <div class="tbl-wrap"><table>
+          <thead><tr><th>Élément</th><th>Valeur</th></tr></thead>
+          <tbody>
+            <tr><td>Grille</td><td>12 colonnes</td></tr>
+            <tr><td>Gouttière</td><td>24&nbsp;px (<code>--s5</code>)</td></tr>
+            <tr><td>Marges latérales</td><td>16&nbsp;px mobile · 32&nbsp;px tablette · 64&nbsp;px bureau</td></tr>
+            <tr><td>Largeur maximale</td><td>1&nbsp;240&nbsp;px</td></tr>
+            <tr><td>Largeur de texte</td><td>75 caractères maximum</td></tr>
+            <tr><td>Écart entre sections</td><td>96&nbsp;px (<code>--s9</code>)</td></tr>
+            <tr><td>Zone tactile minimale</td><td>44 × 44&nbsp;px</td></tr>
+          </tbody></table></div>
+      </div>
+    </div>
+
+    <div class="sub-h"><h3 class="t-h3 mark" id="marge-padding-et-ecart">Marge, padding et écart</h3><p>Déplacez les curseurs pour visualiser chaque notion.</p></div>
+    <div class="panel"><div class="pg">
+      <div>
+        <div class="sl"><label for="pg-m">Margin</label><input type="range" id="pg-m" min="0" max="64" step="4" value="24"><output for="pg-m" id="o-m">24 px</output></div>
+        <div class="sl"><label for="pg-p">Padding</label><input type="range" id="pg-p" min="0" max="64" step="4" value="24"><output for="pg-p" id="o-p">24 px</output></div>
+        <div class="sl"><label for="pg-g">Gap</label><input type="range" id="pg-g" min="0" max="48" step="4" value="12"><output for="pg-g" id="o-g">12 px</output></div>
+        <div class="sl"><label for="pg-r">Rayon</label><input type="range" id="pg-r" min="0" max="8" step="2" value="4"><output for="pg-r" id="o-r">4 px</output></div>
+        <div class="leg"><span><i style="background:var(--corail-c)"></i>Margin</span><span><i style="background:var(--perle)"></i>Padding</span><span><i style="background:#fff"></i>Contenu</span></div>
+        <div class="codeblock" id="pg-code" style="margin-top:16px"><button class="btn b3 sm copy" style="--bf:#F7F7F7;--bbd:rgba(255,255,255,.4)" type="button" data-copy={initialCode} data-copy-label="Code CSS">Copier</button><pre><code class="language-css">{initialCode}</code></pre></div>
+      </div>
+      <div class="pg-stage"><div class="pg-m" id="pg-m-el" style="padding:24px;border-radius:4px"><div class="pg-b" id="pg-b-el" style="padding:24px;gap:12px;border-radius:4px"><div class="pg-c">Élément A</div><div class="pg-c">Élément B</div></div></div></div>
+    </div></div>
+<script>
+  import '../../scripts/demos/spacing.js';
+</script>

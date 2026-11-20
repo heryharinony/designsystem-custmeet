@@ -1,0 +1,163 @@
+/* Concept : navigation latérale fixe, bandes de sections alternées (clair / sombre), composants vivants.
+   Tokens : palette de la charte V1.0 (Rouge, Corail, Ardoise + neutres), Changa Bold pour les titres, Inter pour le reste. */
+
+:root {  /* Thème */
+
+  --bg: #FFFFFF;
+
+  --bg-alt: #F7F7F7;
+
+  --surface: #FFFFFF;
+
+  --ink: #1A252C;
+
+  --muted: #4F5D66;
+
+  --line: #DDE1E7;
+
+  --accent-text: #AE4736;
+
+  --focus: #1A252C;
+
+  --nav-on: #F7F7F7;
+
+  --btn2-bg: #1A252C;
+
+  --btn2-fg: #FFFFFF;
+
+  --logo-r: #F10F1A;
+
+  --logo-k: #142126;
+
+  --logo-o: #F8664D;
+
+  --logo-c: #000000;
+
+  --shadow-sm: 0 1px 2px rgba(26,37,44,.08);
+
+  --shadow-md: 0 8px 24px rgba(26,37,44,.10);
+
+  --shadow-lg: 0 24px 56px rgba(26,37,44,.18);
+}
+
+@media (prefers-color-scheme:dark) {  :root:not([data-theme="light"]) {
+    --bg: #141D22;
+    --bg-alt: #18242A;
+    --surface: #1A252C;
+    --ink: #F7F7F7;
+    --muted: #C6CBD4;
+    --line: rgba(255,255,255,.16);
+    --logo-r: #FFFFFF;
+    --logo-k: #FFFFFF;
+    --logo-o: #FFFFFF;
+    --logo-c: #1A252C;
+    --accent-text: #F8664D;
+    --focus: #F7F7F7;
+    --nav-on: rgba(255,255,255,.09);
+    --btn2-bg: #F7F7F7;
+    --btn2-fg: #1A252C;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,.4);
+    --shadow-md: 0 8px 24px rgba(0,0,0,.35);
+    --shadow-lg: 0 24px 56px rgba(0,0,0,.5);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {  --bg: #141D22;
+
+  --bg-alt: #18242A;
+
+  --surface: #1A252C;
+
+  --ink: #F7F7F7;
+
+  --muted: #C6CBD4;
+
+  --line: rgba(255,255,255,.16);
+
+  --logo-r: #FFFFFF;
+
+  --logo-k: #FFFFFF;
+
+  --logo-o: #FFFFFF;
+
+  --logo-c: #1A252C;
+
+  --accent-text: #F8664D;
+
+  --focus: #F7F7F7;
+
+  --nav-on: rgba(255,255,255,.09);
+
+  --btn2-bg: #F7F7F7;
+
+  --btn2-fg: #1A252C;
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.4);
+
+  --shadow-md: 0 8px 24px rgba(0,0,0,.35);
+
+  --shadow-lg: 0 24px 56px rgba(0,0,0,.5);
+
+  color-scheme: dark;
+}
+
+/* Bande toujours sombre (typographie, exemple d'usage) */
+
+.band-dark {  --bg: #1A252C;
+
+  --bg-alt: #1A252C;
+
+  --surface: #22303A;
+
+  --ink: #F7F7F7;
+
+  --muted: #C6CBD4;
+
+  --line: rgba(255,255,255,.18);
+
+  --logo-r: #FFFFFF;
+
+  --logo-k: #FFFFFF;
+
+  --logo-o: #FFFFFF;
+
+  --logo-c: #1A252C;
+
+  --accent-text: #F8664D;
+
+  --focus: #F7F7F7;
+
+  --nav-on: rgba(255,255,255,.09);
+
+  --btn2-bg: #F7F7F7;
+
+  --btn2-fg: #1A252C;
+
+  background: var(--bg);
+
+  color: var(--ink);
+
+  color-scheme: dark;
+}
+
+.lg-r {  fill: var(--logo-r);
+}
+
+.lg-k {  fill: var(--logo-k);
+}
+
+.lg-o {  fill: var(--logo-o);
+}
+
+.lg-c {  fill: var(--logo-c);
+}
+
+.gr {  fill: none;
+
+  stroke: currentColor;
+
+  stroke-width: 1;
+
+  vector-effect: non-scaling-stroke;
+}

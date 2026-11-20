@@ -1,0 +1,77 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import DocTools from '../components/DocTools.astro';
+import Icon from '../components/Icon.astro';
+import IconSprite from '../components/IconSprite.astro';
+import Sidebar from '../components/Sidebar.astro';
+import '../styles/brand-tokens.css';
+import '../styles/tokens.css';
+import '../styles/design-system.css';
+import '../styles/docs.css';
+
+type Doc = CollectionEntry<'docs'>['data'];
+interface Props { pages: Doc[] }
+const { pages } = Astro.props;
+const overview = pages[0];
+---
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Design system CUSTMEET</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Changa:wght@700&family=Inter:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <script is:inline>
+      try {
+        const theme = localStorage.getItem('cm-theme');
+        if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
+      } catch {}
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#doc-main">Aller au contenu</a>
+    <IconSprite />
+    <div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+    <div class="drawer-bg" id="drawer-bg" aria-hidden="true"></div>
+
+    <div class="shell">
+      <Sidebar overview={overview} pages={pages} />
+
+      <div class="main" id="doc-shell">
+        <header class="top">
+          <Breadcrumbs overview={overview} />
+          <div class="top-r">
+            <span class="status"><span class="dot"></span>Alpha</span>
+            <DocTools />
+            <button class="btn b3 sm icon-only" id="theme-btn" type="button" aria-label="Changer de thème">
+              <Icon name="moon" class="s20" />
+            </button>
+            <a class="btn b3 hide-s" href="https://custmeet.com" target="_blank" rel="noopener noreferrer">
+              L’application <Icon name="arrow-up-right" class="s20" />
+            </a>
+          </div>
+        </header>
+
+        <main id="doc-main" tabindex="-1" data-pagefind-body>
+          <slot />
+        </main>
+
+        <footer class="foot"><div class="wrap sec-in foot-in">
+          <svg class="logo-f" viewBox="0 0 205.78 50.67" role="img" aria-label="CUSTMEET"><use href="#logo-h" /></svg>
+          <span>Un système vivant, conçu pour évoluer avec les usages.</span>
+          <span>Design system · V 0.1</span>
+        </div></footer>
+      </div>
+    </div>
+    <script>
+      import '../scripts/shell.js';
+      import '../scripts/section-navigation.js';
+      import '../scripts/search.js';
+      import '../scripts/shared.js';
+    </script>
+  </body>
+</html>

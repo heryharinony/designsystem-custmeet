@@ -1,0 +1,25 @@
+      <div class="panel">
+        <div class="panel-h"><span class="kicker">Saisie</span><h3 id="champs-title">Champs</h3></div>
+        <div class="stage" style="display:block;padding:var(--s5)">
+          <form id="form-demo" novalidate>
+            <div class="field" id="f-mail"><label for="in-mail">Adresse e-mail</label><input class="input" id="in-mail" type="email" placeholder="nom@exemple.fr" autocomplete="off"><p class="help">Nous n’utilisons votre adresse que pour l’invitation.</p><p class="msg"><svg class="ic s20" style="width:16px;height:16px"><use href="#i-x-circle"/></svg>Adresse e-mail invalide.</p></div>
+            <div class="field" id="f-code"><label for="in-code">Code d’accès</label><input class="input" id="in-code" value="V5U-Z7R" maxlength="12" autocomplete="off"><p class="help">8 caractères, lettres et chiffres.</p><p class="msg"><svg class="ic s20" style="width:16px;height:16px"><use href="#i-x-circle"/></svg>Le code doit contenir 8 caractères.</p></div>
+            <div class="field"><label for="in-sel">Fuseau horaire</label><select class="select" id="in-sel"><option>Europe/Zurich (UTC+1)</option><option>Indian/Antananarivo (UTC+3)</option><option>America/Montreal (UTC−5)</option></select></div>
+            <div class="field"><label for="in-off">Champ désactivé</label><input class="input" id="in-off" value="Non modifiable" disabled></div>
+            <button class="btn" type="submit">Valider</button>
+          </form>
+        </div>
+        <div class="grid g2" style="margin-top:var(--s5);gap:var(--s4)">
+          <div class="field" style="margin:0"><span class="lbl">Notifications</span>
+            <label class="choice"><input type="checkbox" checked>Par e-mail</label>
+            <label class="choice"><input type="checkbox">Dans l’application</label></div>
+          <div class="field" style="margin:0"><span class="lbl">Qualité vidéo</span>
+            <label class="choice"><input type="radio" name="q" checked>Automatique</label>
+            <label class="choice"><input type="radio" name="q">Haute définition</label></div>
+        </div>
+        <div style="margin-top:var(--s4)" class="field"><button class="switch" id="sw-demo" type="button" role="switch" aria-checked="true" aria-label="Micro coupé à l’entrée"><span class="tr"></span><span>Couper le micro à l’entrée</span></button></div>
+        <div class="field"><label for="in-ta">Message</label><textarea class="textarea" id="in-ta" placeholder="Écrivez un mot à votre équipe."></textarea></div>
+      </div>
+<script>
+  import '../../scripts/demos/fields.js';
+</script>

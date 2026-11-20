@@ -1,0 +1,11 @@
+:root{
+  --rouge:#E50000; --rouge-f:#A00000; --rouge-c:#F28080;
+  --corail:#F8664D; --corail-f:#EA4B3F; --corail-c:#FCB3A6;
+  --ardoise:#1A252C; --perle:#C6CBD4; --blanc:#FFFFFF; --nuage:#F7F7F7;
+  --info-f:#00548C; --info:#0078C8; --info-c:#80BCE4;
+  --ok-f:#11703F; --ok:#18A05A; --ok-c:#8CD0AC;
+  --warn-f:#936A00; --warn:#F5B000; --warn-c:#FAD880;
+  --font-title:'Changa',Arial,sans-serif; --font-body:'Inter',system-ui,Arial,sans-serif;
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:64px; --s9:96px;
+  --r-sm:4px; --r-md:6px; --r-lg:8px; --r-pill:4px;
+}

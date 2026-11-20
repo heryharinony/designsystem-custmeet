@@ -1,0 +1,10 @@
+---
+import { getCollection } from 'astro:content';
+import DocSection from '../components/DocSection.astro';
+import DocsLayout from '../layouts/DocsLayout.astro';
+
+const sections = (await getCollection('docs')).sort((a, b) => a.data.order - b.data.order);
+---
+<DocsLayout pages={sections.map(({ data }) => data)}>
+  {sections.map((entry) => <DocSection entry={entry} />)}
+</DocsLayout>

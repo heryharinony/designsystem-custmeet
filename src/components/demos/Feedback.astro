@@ -1,0 +1,60 @@
+    <div class="sub-h"><h3 id="retours-title" class="t-h3 mark" style="font-size:28px">Retours utilisateur</h3><p>Alertes, notifications, modale et infobulle.</p></div>
+    <div class="grid g2">
+      <div class="panel">
+        <div class="panel-h"><span class="kicker">Messages persistants</span><h4 id="alertes">Alertes</h4></div>
+        <div style="display:grid;gap:12px" id="alerts">
+          <div class="alert al-info"><svg class="ic"><use href="#i-info"/></svg><div><strong>Information</strong><p>Votre réunion démarre dans 10 minutes.</p></div><button class="x" aria-label="Fermer l’alerte"><svg class="ic s20" style="width:16px;height:16px"><use href="#i-x"/></svg></button></div>
+          <div class="alert al-ok"><svg class="ic"><use href="#i-check-circle"/></svg><div><strong>Succès</strong><p>Votre invitation a bien été envoyée.</p></div><button class="x" aria-label="Fermer l’alerte"><svg class="ic s20" style="width:16px;height:16px"><use href="#i-x"/></svg></button></div>
+          <div class="alert al-warn"><svg class="ic"><use href="#i-alert"/></svg><div><strong>Attention</strong><p>Vérifiez le code d’accès avant de continuer.</p></div><button class="x" aria-label="Fermer l’alerte"><svg class="ic s20" style="width:16px;height:16px"><use href="#i-x"/></svg></button></div>
+          <div class="alert al-err"><svg class="ic"><use href="#i-x-circle"/></svg><div><strong>Erreur</strong><p>La connexion a échoué. Réessayez.</p></div><button class="x" aria-label="Fermer l’alerte"><svg class="ic s20" style="width:16px;height:16px"><use href="#i-x"/></svg></button></div>
+        </div>
+        <button class="btn b4 sm" id="alerts-reset" style="margin-top:12px">Restaurer les alertes</button>
+      </div>
+      <div class="panel" id="notifs">
+        <div class="panel-h"><span class="kicker">Confirmer une action</span><h4 id="notifications">Notifications</h4></div>
+        <p class="p-md" style="color:var(--muted);margin:0 0 var(--s4)">Une notification est un court message qui apparaît en bas à droite de l’écran juste après une action. Elle confirme ce qui vient de se passer, puis disparaît toute seule au bout de 4&nbsp;secondes. Cliquez sur «&nbsp;Tester&nbsp;» pour la voir apparaître.</p>
+        <div class="notif-list">
+          <div class="nrow">
+            <div class="toast static" style="--c:#8CD0AC"><svg class="ic"><use href="#i-check-circle"/></svg><span>Votre invitation a bien été envoyée.</span></div>
+            <div class="nmeta"><div><b>Succès</b><span>Une action vient de se terminer correctement.</span></div><button class="btn b3 sm" data-toast="ok" data-msg="Votre invitation a bien été envoyée.">Tester</button></div>
+          </div>
+          <div class="nrow">
+            <div class="toast static" style="--c:#80BCE4"><svg class="ic"><use href="#i-info"/></svg><span>Votre réunion démarre dans 10 minutes.</span></div>
+            <div class="nmeta"><div><b>Information</b><span>Un fait utile, sans action demandée.</span></div><button class="btn b3 sm" data-toast="info" data-msg="Votre réunion démarre dans 10 minutes.">Tester</button></div>
+          </div>
+          <div class="nrow">
+            <div class="toast static" style="--c:#FAD880"><svg class="ic"><use href="#i-alert"/></svg><span>Vérifiez le code d’accès avant de continuer.</span></div>
+            <div class="nmeta"><div><b>Attention</b><span>Un point à contrôler avant de poursuivre.</span></div><button class="btn b3 sm" data-toast="warn" data-msg="Vérifiez le code d’accès avant de continuer.">Tester</button></div>
+          </div>
+          <div class="nrow">
+            <div class="toast static" style="--c:#F28080"><svg class="ic"><use href="#i-x-circle"/></svg><span>La connexion a échoué. Réessayez.</span></div>
+            <div class="nmeta"><div><b>Erreur</b><span>Une action a échoué mais peut être relancée.</span></div><button class="btn b3 sm" data-toast="err" data-msg="La connexion a échoué. Réessayez.">Tester</button></div>
+          </div>
+        </div>
+        <ul class="p-sm" style="color:var(--muted);margin:var(--s4) 0 0;padding-left:18px;display:grid;gap:4px">
+          <li>Une seule phrase courte, avec un point final.</li>
+          <li>Une seule notification à la fois.</li>
+          <li>Pour une erreur qui bloque la personne, utilisez plutôt une alerte, qui reste affichée.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="grid g2" style="margin-top:var(--s5)">
+      <div class="panel">
+        <div class="panel-h"><span class="kicker">Confirmation</span><h4 id="modale">Modale</h4></div>
+        <div class="stage"><button class="btn b2" id="open-modal">Quitter la réunion</button></div>
+      </div>
+      <div class="panel">
+        <div class="panel-h"><span class="kicker">Aide contextuelle</span><h4 id="infobulle">Infobulle</h4></div>
+        <div class="stage"><span class="tip"><button class="btn b3 icon-only" aria-describedby="tp-1" aria-label="Copier le lien"><svg class="ic s20"><use href="#i-link"/></svg></button><span role="tooltip" id="tp-1">Copier le lien d’invitation</span></span><span class="tip"><span class="badge bg-sec" tabindex="0" aria-describedby="tp-2">Code VSUZRR</span><span role="tooltip" id="tp-2">Valable 24&nbsp;h</span></span></div>
+      </div>
+    </div>
+<div class="overlay" id="modal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="m-t">
+    <h3 id="m-t" data-toc-ignore>Quitter la réunion&nbsp;?</h3>
+    <p>Les participants seront prévenus de votre départ. Vous pourrez rejoindre à nouveau avec le même code.</p>
+    <div class="btn-row"><button class="btn b3" data-close>Rester</button><button class="btn bd" data-confirm>Quitter</button></div>
+  </div>
+</div>
+<script>
+  import '../../scripts/demos/feedback.js';
+</script>

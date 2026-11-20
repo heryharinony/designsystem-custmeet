@@ -1,0 +1,21 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Icon from './Icon.astro';
+
+type Doc = CollectionEntry<'docs'>['data'];
+interface Props { overview: Doc }
+const { overview } = Astro.props;
+const home = `#${overview.legacyId}`;
+---
+<div class="top-start">
+  <button class="btn b3 sm icon-only menu-btn" id="menu-btn" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="side">
+    <Icon name="menu" class="s20" />
+  </button>
+  <svg class="logo-m" viewBox="0 0 103.05 97.19" role="img" aria-label="CUSTMEET"><use href="#logo-s" /></svg>
+  <nav class="crumbs" aria-label="Fil d’Ariane">
+    <a class="crumb-brand" href={home}>CUSTMEET</a><span class="sep crumb-brand" aria-hidden="true">/</span>
+    <a class="crumb-home" href={home}>Design system</a><span class="sep crumb-home" aria-hidden="true">/</span>
+    <a class="crumb-parent" href="#composants" hidden>Composants</a><span class="sep crumb-parent" aria-hidden="true" hidden>/</span>
+    <span id="current-section" aria-current="location">{overview.label}</span>
+  </nav>
+</div>

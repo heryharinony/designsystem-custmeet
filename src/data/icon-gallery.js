@@ -1,0 +1,1 @@
+export const iconBackgrounds = {blanc:['#FFFFFF','#1A252C','#EA4B3F','Icône par défaut Ardoise, active Corail foncé.'],ardoise:['#1A252C','#F7F7F7','#F8664D','Icône par défaut Nuage, active Corail.'],corail:['#F8664D','#FFFFFF','#FFFFFF','Icône Blanche.'],rouge:['#E50000','#FFFFFF','#FFFFFF','Icône Blanche.']};

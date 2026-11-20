@@ -1,0 +1,27 @@
+    <div class="panel">
+      <div class="panel-h" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-start">
+        <div><span class="kicker">Actions</span><h3 id="boutons-title">Boutons</h3></div>
+        <div class="seg" id="btn-state" role="group" aria-label="État forcé">
+          <button aria-pressed="true" data-s="">Repos</button><button aria-pressed="false" data-s="is-hover">Survol</button><button aria-pressed="false" data-s="is-active">Clic</button><button aria-pressed="false" data-s="is-disabled">Inactif</button>
+        </div>
+      </div>
+      <div class="stage" id="btn-demo" style="gap:var(--s4)">
+        <button class="btn">Action principale</button>
+        <button class="btn b2">Action secondaire</button>
+        <button class="btn b3">Action contour</button>
+        <button class="btn b4"><svg class="ic s20"><use href="#i-arrow-right"/></svg>Action tertiaire</button>
+        <button class="btn bd">Supprimer</button>
+      </div>
+      <p class="p-sm" style="color:var(--muted);margin:12px 0 var(--s5)">Principal&nbsp;: Corail au repos, Corail foncé au survol et au clic, Corail clair s’il est inactif. Le texte est toujours blanc sur un bouton Corail, et toujours en majuscules sur tous les boutons. Un seul bouton principal par zone.</p>
+       <h4 class="kicker sub-kicker" style="margin-bottom:8px" id="tailles-et-variantes">Tailles et variantes</h4>
+      <div class="stage">
+        <button class="btn sm">Petit</button><button class="btn">Moyen</button><button class="btn lg">Grand</button>
+        <button class="btn"><svg class="ic s20"><use href="#i-video"/></svg>Avec icône</button>
+        <button class="btn icon-only" aria-label="Ajouter"><svg class="ic s20"><use href="#i-plus"/></svg></button>
+        <button class="btn b3 icon-only" aria-label="Copier"><svg class="ic s20"><use href="#i-copy"/></svg></button>
+        <button class="btn" id="btn-load" data-t="Envoyer l’invitation">Envoyer l’invitation</button>
+      </div>
+    </div>
+<script>
+  import '../../scripts/demos/buttons.js';
+</script>

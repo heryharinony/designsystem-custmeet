@@ -1,0 +1,24 @@
+---
+import Icon from './Icon.astro';
+---
+<button class="btn b3 sm icon-only" id="search-btn" type="button" aria-label="Rechercher" title="Rechercher" aria-haspopup="dialog" hidden>
+  <Icon name="search" class="s20" />
+</button>
+<details class="page-toc" id="page-toc" hidden>
+  <summary class="btn b3 sm icon-only" aria-label="Dans cette page" title="Dans cette page"><Icon name="list" class="s20" /></summary>
+  <nav aria-label="Dans cette page">
+    <p class="kicker">Dans cette page</p>
+    <ul id="toc-links"></ul>
+  </nav>
+</details>
+
+<dialog class="search-dialog" id="search-dialog" aria-labelledby="search-title">
+  <div class="search-heading">
+    <h2 id="search-title">Rechercher</h2>
+    <form method="dialog"><button class="btn b3 sm icon-only" type="submit" aria-label="Fermer la recherche"><Icon name="x" class="s20" /></button></form>
+  </div>
+  <label class="sr" for="search-query">Rechercher dans le design system</label>
+  <input class="input" id="search-query" type="search" placeholder="Rechercher dans le design system" autocomplete="off" autofocus />
+  <p class="search-status" id="search-status" role="status"></p>
+  <ol class="search-results" id="search-results"></ol>
+</dialog>

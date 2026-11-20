@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  return (await getCollection('docs', ({ data }) => data.route !== '/')).map(({ data }) => ({
+    params: { slug: data.route.slice(1, -1) },
+    props: { destination: `/#${data.legacyId}` },
+  }));
+}
+
+const { destination } = Astro.props;
+---
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Design system CUSTMEET</title>
+    <link rel="canonical" href="/" />
+    <script is:inline define:vars={{ destination }}>
+      location.replace(`/${location.search}${location.hash || destination.slice(1)}`);
+    </script>
+    <meta http-equiv="refresh" content={`0;url=${destination}`} />
+  </head>
+  <body><a href={destination}>Ouvrir la section dans le design system CUSTMEET</a></body>
+</html>

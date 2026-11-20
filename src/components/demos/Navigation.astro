@@ -1,0 +1,49 @@
+---
+import Icon from '../Icon.astro';
+import { initialPage, pageNumbers } from '../../data/pagination.js';
+
+---
+    <div class="sub-h"><h3 id="navigation-title" class="t-h3 mark" style="font-size:28px">Navigation</h3><p>Fil d’Ariane, onglets, pagination et accordéon.</p></div>
+    <div class="grid g2">
+      <div class="panel">
+        <div class="panel-h"><span class="kicker">Position</span><h4 id="fil-d-ariane">Fil d’Ariane</h4></div>
+        <p class="p-sm" style="color:var(--muted);margin:0 0 var(--s3)">Deux états&nbsp;: inactif (gris) pour les niveaux parents, actif (gras) pour la page courante. Les éléments ne sont pas cliquables pour le moment.</p>
+        <nav aria-label="Fil d’Ariane" class="stage"><div class="crumbs demo"><span class="crumb">Accueil</span><span class="sep">/</span><span class="crumb">Réunions</span><span class="sep">/</span><span class="crumb" aria-current="page">Point d’équipe</span></div></nav>
+        <div class="panel-h" style="margin-top:var(--s5)"><span class="kicker">Parcourir</span><h4 id="pagination">Pagination</h4></div>
+        <div class="stage">
+          <div class="pager" id="pager">
+            <button type="button" data-page={initialPage - 1} data-step="prev" aria-label="Page précédente">
+              <span style="display:flex;transform:rotate(90deg)"><Icon name="chevron" class="s20" /></span>
+            </button>
+            {pageNumbers(initialPage).map((page) => page === '…' ? (
+              <span class="pager-gap">{page}</span>
+            ) : (
+              <button type="button" data-page={page} aria-current={page === initialPage ? 'page' : undefined}>{page}</button>
+            ))}
+            <button type="button" data-page={initialPage + 1} data-step="next" aria-label="Page suivante">
+              <span style="display:flex;transform:rotate(-90deg)"><Icon name="chevron" class="s20" /></span>
+            </button>
+          </div>
+        </div>
+        <div class="panel-h" style="margin-top:var(--s5)"><span class="kicker">Avancement</span><h4 id="progression">Progression</h4></div>
+        <div class="stage" style="display:block"><div class="prog" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="60" id="prog"><div style="width:60%"></div></div><div class="ctl" style="margin-top:12px"><span class="p-sm" id="prog-t">Étape 3 sur 5</span><button class="btn b3 sm" id="prog-b">Étape suivante</button></div></div>
+      </div>
+      <div class="panel">
+        <div class="panel-h"><span class="kicker">Organiser</span><h4 id="onglets">Onglets</h4></div>
+        <div class="tabs" role="tablist" id="tabs">
+          <button role="tab" aria-selected="true" aria-controls="tp0" id="tb0">Aperçu</button><button role="tab" aria-selected="false" aria-controls="tp1" id="tb1" tabindex="-1">Participants</button><button role="tab" aria-selected="false" aria-controls="tp2" id="tb2" tabindex="-1">Paramètres</button>
+        </div>
+        <div class="tabpanel" role="tabpanel" id="tp0" aria-labelledby="tb0"><p class="p-md">Point d’équipe, aujourd’hui à 9&nbsp;h&nbsp;30. Durée prévue&nbsp;: 30 minutes.</p></div>
+        <div class="tabpanel" role="tabpanel" id="tp1" aria-labelledby="tb1" hidden><div style="display:flex;align-items:center;gap:12px"><span style="display:flex"><span class="av a">AM</span><span class="av b">JL</span><span class="av c">+4</span></span><span class="p-md">6 participants invités.</span></div></div>
+        <div class="tabpanel" role="tabpanel" id="tp2" aria-labelledby="tb2" hidden><p class="p-md">Salle d’attente activée. Enregistrement désactivé.</p></div>
+        <div class="panel-h" style="margin-top:var(--s5)"><span class="kicker">Questions fréquentes</span><h4 id="accordeon">Accordéon</h4></div>
+        <div class="acc" id="acc">
+          <div class="acc-i"><button class="acc-h" aria-expanded="true">Faut-il un compte pour rejoindre&nbsp;?<svg class="ic"><use href="#i-chevron"/></svg></button><div class="acc-p">Non. Saisissez simplement le code d’accès sur custmeet.com.</div></div>
+          <div class="acc-i"><button class="acc-h" aria-expanded="false">Combien de temps le code est-il valable&nbsp;?<svg class="ic"><use href="#i-chevron"/></svg></button><div class="acc-p" hidden>Le code reste valable 24&nbsp;h après la création de la réunion.</div></div>
+          <div class="acc-i"><button class="acc-h" aria-expanded="false">Puis-je inviter des participants externes&nbsp;?<svg class="ic"><use href="#i-chevron"/></svg></button><div class="acc-p" hidden>Oui. Partagez le lien ou le code, sans limite de domaine.</div></div>
+        </div>
+      </div>
+    </div>
+<script>
+  import '../../scripts/demos/navigation.js';
+</script>

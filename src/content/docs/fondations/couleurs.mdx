@@ -1,0 +1,39 @@
+---
+route: "/fondations/couleurs/"
+label: "Couleurs"
+category: "Fondations"
+order: 20
+legacyId: "couleurs"
+icon: "palette"
+eyebrow: "01 — Fondations"
+headline: "Couleurs de la marque"
+lead: "L’énergie du rouge, la modernité du corail et la stabilité de l’ardoise. Cliquez sur une couleur pour copier sa valeur."
+---
+
+import ColorSamples from '../../../components/demos/ColorSamples.astro';
+import ContrastChecker from '../../../components/demos/ContrastChecker.astro';
+import Icon from '../../../components/Icon.astro';
+import SectionHeading from '../../../components/SectionHeading.astro';
+
+<ColorSamples kind="brand" />
+
+<div class="note" style={{ marginTop: 'var(--s5)' }}>
+  <Icon name="info" />
+  <p style={{ margin: 0 }}><strong>Règle d’usage.</strong> Les nuances signalent un état&nbsp;: survol, clic ou désactivation. Elles ne servent jamais de décoration.</p>
+</div>
+
+<SectionHeading id="nuances-couleurs" title="Nuances" description="Chaque couleur de marque a un ton foncé et un ton clair." />
+
+<ColorSamples kind="shades" />
+
+<SectionHeading id="couleurs-de-statut" title="Couleurs de statut" description="Réservées aux messages d’état de l’interface." />
+
+<ColorSamples kind="status" />
+
+<SectionHeading id="fonds-et-texte-associe" title="Fonds et texte associé" description="Quelle couleur de texte utiliser sur chaque fond." />
+
+<ColorSamples kind="backgrounds" />
+
+<SectionHeading id="verificateur-de-contraste" title="Vérificateur de contraste" description={'Minimum 4,5\u00a0:1 pour le texte courant, 3\u00a0:1 pour les grands textes.'} />
+
+<ContrastChecker />
